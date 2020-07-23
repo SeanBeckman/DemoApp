@@ -28,6 +28,7 @@ class ContactListFragment : Fragment() {
                 inflater, R.layout.contact_list_fragment, container, false)
         val view: View = binding.root
 
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
         return view

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="android.view.View"/>
         <variable name="viewModel" type="com.example.demoapp.ui.contact.ContactListViewModel"/>
     </data>
 
 <FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.contact.ContactListFragment">
@@ -18,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/list_container">
+        android:id="@+id/list_container"
+        app:isVisible="@{viewModel.hasData}">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
@@ -49,7 +49,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/full_screen_error"
-        android:visibility="@{viewModel.hasError ? View.VISIBLE : View.GONE}">
+        app:isVisible="@{viewModel.hasError}">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/full_screen_loading"
-        android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}">
+        app:isVisible="@{viewModel.isLoading}">
 
         <ProgressBar
             android:layout_width="wrap_content"

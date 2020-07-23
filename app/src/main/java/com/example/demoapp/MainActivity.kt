@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container, ContactListFragment.newInstance())
                     .commitNow()
+            // TODO: Extract fragment transactions to nav library
         }
     }
 }

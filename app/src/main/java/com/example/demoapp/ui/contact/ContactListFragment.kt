@@ -1,31 +1,40 @@
 package com.example.demoapp.ui.contact
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.demoapp.R
+import com.example.demoapp.databinding.ContactListFragmentBindingImpl
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class ContactListFragment : Fragment() {
 
     companion object {
-        fun newInstance() =
-            ContactListFragment()
+        fun newInstance() = ContactListFragment()
     }
 
-    private lateinit var viewModel: ContactListViewModel
+    private val viewModel: ContactListViewModel by viewModel()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val binding: ContactListFragmentBindingImpl = DataBindingUtil.inflate(
+                inflater, R.layout.contact_list_fragment, container, false)
+        val view: View = binding.root
+
+        binding.viewModel = viewModel
+
+        return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ContactListViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.clear()
     }
-
 }

@@ -23,7 +23,8 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:theme="@style/DarkToolBarOverlay">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -36,6 +37,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/contact_list"
         tools:listitem="@layout/contact_item"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:items="@{viewModel.recyclerItems}" />

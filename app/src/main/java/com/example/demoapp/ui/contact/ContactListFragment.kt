@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.example.demoapp.R
 import com.example.demoapp.databinding.ContactListFragmentBindingImpl
+import kotlinx.android.synthetic.main.contact_list_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -25,13 +28,20 @@ class ContactListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding: ContactListFragmentBindingImpl = DataBindingUtil.inflate(
-                inflater, R.layout.contact_list_fragment, container, false)
+                inflater, R.layout.contact_list_fragment, container, false
+        )
         val view: View = binding.root
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        contact_list.addItemDecoration(DividerItemDecoration(contact_list.context, VERTICAL))
     }
 
     override fun onDestroy() {

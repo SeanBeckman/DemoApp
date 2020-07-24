@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/contactListFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.demoapp.MainActivity"
+        android:label="main_activity"
+        tools:layout="@layout/main_activity" />
+
+    <fragment
+        android:id="@+id/contactListFragment"
+        android:name="com.example.demoapp.ui.contact.ContactListFragment"
+        android:label="contact_list_fragment"
+        tools:layout="@layout/contact_list_fragment">
+        <action
+            android:id="@+id/action_contactListFragment_to_contactFragment"
+            app:destination="@id/contactFragment"
+            app:popUpTo="@id/contactListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.demoapp.ui.contact.ContactFragment"
+        android:label="contact_fragment"
+        tools:layout="@layout/contact_fragment" >
+        <argument
+            android:name="contact"
+            app:argType="com.example.demoapp.domain.contact.model.Contact"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>

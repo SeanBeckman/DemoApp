@@ -5,35 +5,46 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.example.demoapp.R
-import com.example.demoapp.databinding.ContactListFragmentBindingImpl
+import com.example.demoapp.databinding.ContactListFragmentBinding
+import com.example.demoapp.domain.contact.model.Contact
+import com.example.demoapp.ui.BaseViewModelFragment
 import kotlinx.android.synthetic.main.contact_list_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ContactListFragment : Fragment() {
+class ContactListFragment : BaseViewModelFragment<List<Contact>>() {
 
     companion object {
         fun newInstance() = ContactListFragment()
     }
 
-    private val viewModel: ContactListViewModel by viewModel()
+    override val viewModel: ContactListViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding: ContactListFragmentBindingImpl = DataBindingUtil.inflate(
+        val binding: ContactListFragmentBinding = DataBindingUtil.inflate(
                 inflater, R.layout.contact_list_fragment, container, false
         )
         val view: View = binding.root
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+
+        viewModel.itemSelection.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                val action =
+                    ContactListFragmentDirections.actionContactListFragmentToContactFragment(it)
+                findNavController().navigate(action)
+            }
+        })
 
         return view
     }
@@ -42,10 +53,5 @@ class ContactListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         contact_list.addItemDecoration(DividerItemDecoration(contact_list.context, VERTICAL))
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.clear()
     }
 }

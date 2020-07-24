@@ -32,7 +32,7 @@ class ContactMocks {
             Company(
                 "Teesla",
                 "We make electric chair lifts!",
-                ""
+                "Driving the future, on off piste at a time"
             )
         )
 

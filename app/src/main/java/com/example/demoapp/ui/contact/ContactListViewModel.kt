@@ -7,10 +7,15 @@ import com.example.demoapp.domain.contact.usecase.GetContacts
 import com.example.demoapp.ui.BaseViewModel
 import com.fraggjkee.recycleradapter.RecyclerItem
 
-class ContactListViewModel (private val getContacts: GetContacts) : BaseViewModel<List<Contact>>() {
+class ContactListViewModel (
+    private val getContacts: GetContacts
+) : BaseViewModel<List<Contact>>() {
 
     private val _recyclerItems = MutableLiveData<List<RecyclerItem>>()
     val recyclerItems: LiveData<List<RecyclerItem>> = _recyclerItems
+
+    private val _itemSelection = MutableLiveData<Contact>()
+    val itemSelection: LiveData<Contact> = _itemSelection
 
     init {
         load()
@@ -31,6 +36,7 @@ class ContactListViewModel (private val getContacts: GetContacts) : BaseViewMode
     }
 
     private fun goToDetail(contact: Contact) {
-        // TODO: go to next page
+        _itemSelection.value = contact
+        _itemSelection.value = null
     }
 }

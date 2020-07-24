@@ -20,7 +20,7 @@ data class Address(
     val street: String,
     val suite: String,
     val city: String,
-    val zipCode: String,
+    val zipcode: String,
     val geo: LatLng
 ): Parcelable
 
@@ -33,6 +33,6 @@ data class LatLng(
 @Parcelize
 data class Company(
     val name: String,
-    val catchphrase: String,
+    val catchPhrase: String,
     val bs: String
 ): Parcelable

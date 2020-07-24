@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/list_container"
-        app:isVisible="@{viewModel.hasData}">
+        app:visibleIfHasData="@{viewModel.state}">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
@@ -50,7 +50,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/full_screen_error"
-        app:isVisible="@{viewModel.hasError}">
+        app:visibleIfHasError="@{viewModel.state}">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/full_screen_loading"
-        app:isVisible="@{viewModel.isLoading}">
+        app:visibleIfIsLoading="@{viewModel.state}">
 
         <ProgressBar
             android:layout_width="wrap_content"

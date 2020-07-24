@@ -7,7 +7,7 @@ import com.example.demoapp.domain.contact.model.Contact
 import io.reactivex.Scheduler
 import io.reactivex.Single
 
-class GetContacts (
+open class GetContacts (
     private val contactRepository: ContactRepository,
     private val dataThreadScheduler: Scheduler,
     private val UiThreadScheduler: Scheduler

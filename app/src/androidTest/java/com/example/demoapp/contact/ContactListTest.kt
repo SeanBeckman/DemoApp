@@ -50,4 +50,8 @@ class ContactListTest {
         onView(withId(R.id.contact_list)).check(matches(isDisplayed()))
         // Bashed my head against mock web server for half a day so left these UI test unfortunately broken and unfinished
     }
+
+    @Test
+    fun whenUserClicksOnContactItem_thenShouldNavigateToContactDetailScreen() {
+    }
 }

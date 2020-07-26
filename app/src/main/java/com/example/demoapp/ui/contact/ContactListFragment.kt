@@ -7,13 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.example.demoapp.R
 import com.example.demoapp.databinding.ContactListFragmentBinding
 import com.example.demoapp.domain.contact.model.Contact
 import com.example.demoapp.ui.BaseViewModelFragment
-import kotlinx.android.synthetic.main.contact_list_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -47,11 +44,5 @@ class ContactListFragment : BaseViewModelFragment<List<Contact>>() {
         })
 
         return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        contact_list.addItemDecoration(DividerItemDecoration(contact_list.context, VERTICAL))
     }
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.demoapp.R
@@ -42,6 +43,8 @@ class ContactFragment : BaseViewModelFragment<Contact>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        ViewCompat.setTranslationZ(view, 100f)
 
         toolbar.setNavigationOnClickListener {
             findNavController().popBackStack()

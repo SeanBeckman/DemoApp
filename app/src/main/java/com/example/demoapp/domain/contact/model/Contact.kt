@@ -1,6 +1,7 @@
 package com.example.demoapp.domain.contact.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -26,8 +27,8 @@ data class Address(
 
 @Parcelize
 data class LatLng(
-    val latitude: Double,
-    val longitude: Double
+    @SerializedName("lat") val latitude: Double,
+    @SerializedName("lng") val longitude: Double
 ): Parcelable
 
 @Parcelize

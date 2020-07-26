@@ -1,3 +1,5 @@
+![geef](https://media.giphy.com/media/hWWwDj4MBurktacIvy/giphy.gif)
+
 A simple app to demonstrate some of the principles of clean architecture. A basic separation of code into packages which would then eventually become their own contained module to ensure clean routing of data and responsibility separation between UI and logic.
 
 Koin for DI with each layer responsible for for supplying instances of clesses and controlling access to it's APIs. Ideally these modules would contain mostly hidden classes with only the Use case and data objects available to the UI layer.
